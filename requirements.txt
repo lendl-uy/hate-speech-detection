@@ -1,3 +1,7 @@
 datasets
 scikit-learn
 optuna
+xgboost
+matplotlib
+tqdm
+bitermplus
