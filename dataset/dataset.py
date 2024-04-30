@@ -1,4 +1,5 @@
 import csv
+import pickle
 from typing import Tuple, List
 
 class Dataset:
@@ -22,6 +23,21 @@ class Dataset:
         self.X_train, self.Y_train = self.get_features_and_labels(train_data)
         self.X_val, self.Y_val = self.get_features_and_labels(val_data)
         self.X_test, self.Y_test = self.get_features_and_labels(test_data)
+
+    def save_to_file(self, X, Y, file_path):
+        with open(file_path, "wb") as f:
+            pickle.dump((X, Y), f)
+            print(f"Data saved to {file_path}")
+
+    def load_from_file(self, file_path):
+        try:
+            with open(file_path, "rb") as f:
+                X, Y = pickle.load(f)
+                print(f"Data loaded from {file_path}")
+                return X, Y
+        except FileNotFoundError:
+            print("File not found. Please check the path or pull the dataset first.")
+            return None, None
 
     def get_features(self) -> List:
         """Returns a copy of combined features from all sets."""
