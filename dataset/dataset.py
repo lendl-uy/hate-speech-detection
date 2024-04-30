@@ -6,7 +6,7 @@ class Dataset:
     """
     A class to handle loading and preprocessing of dataset for machine learning.
     """
-    def __init__(self, train_path: str, val_path: str, test_path: str, for_cleaning: bool = False):
+    def __init__(self, train_path: str = None, val_path: str = None, test_path: str = None, for_cleaning: bool = False):
         self.train_path = train_path
         self.val_path = val_path
         self.test_path = test_path
