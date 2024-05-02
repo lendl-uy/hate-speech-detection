@@ -4,4 +4,7 @@ optuna
 xgboost
 matplotlib
 tqdm
-bitermplus
+gensim
+nltk
+scipy<1.13
+umap-learn
