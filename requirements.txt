@@ -9,3 +9,4 @@ gensim
 nltk
 scipy<1.13
 umap-learn
+bertopic
