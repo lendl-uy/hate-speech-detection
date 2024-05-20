@@ -1,0 +1,8 @@
+{
+  "labels":[
+    "HATE_SPEECH",
+    "NOT_HATE_SPEECH"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}
