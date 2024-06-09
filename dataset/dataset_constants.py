@@ -6,4 +6,4 @@ STOPWORDS_ENGLISH_PATH = "stopwords/english"
 STOPWORDS_TAGALOG_PATH = "stopwords/tagalog"
 split_sizes=[10000, 4232, 4232]
 split_sizes_cleaned_old = [8674, 3859, 3976]
-split_sizes_cleaned = [8993, 3957, 4099]
+split_sizes_cleaned = [8981, 3951, 4094]
