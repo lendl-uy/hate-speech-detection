@@ -1,4 +1,4 @@
-import csv
+import pandas as pd
 import pickle
 from typing import Tuple, List
 
@@ -77,21 +77,24 @@ class Dataset:
             return self.Y_train + self.Y_val + self.Y_test 
 
     def read_csv(self, file_path: str) -> List[List[str]]:
-        """Reads a CSV file and returns the data as a list of rows."""
+        """Reads a CSV file using pandas and returns the data as a list of rows."""
         try:
-            data = []
-            with open(file_path, newline="", encoding="utf-8") as csvfile:
-                csvreader = csv.reader(csvfile)
-                for row in csvreader:
-                    data.append(row)
+            # Using pandas to read the CSV file
+            df = pd.read_csv(file_path, delimiter=',', quotechar='"', lineterminator='\n', encoding='utf-8')
+            
+            # Convert dataframe to a list of lists
+            data = df.values.tolist()
             return data
         except FileNotFoundError:
             print(f"Error: The file {file_path} does not exist.")
             return []
+        except Exception as e:
+            print(f"Error reading the file {file_path}: {e}")
+            return []
 
     def preprocess_data(self, data: List[List[str]]) -> List[List[str]]:
-        """Removes empty rows, rows with missing labels, and skips the title row."""
-        return [row for row in data if row and len(row) > 1][1:]
+        """Removes empty rows and rows with missing labels."""
+        return [row for row in data if row and len(row) > 1]
 
     def get_features_and_labels(self, data: List[List[str]]) -> Tuple[List, List]:
         """Extracts features and labels from the dataset."""
